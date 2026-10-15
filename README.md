@@ -1,6 +1,6 @@
 # MEI Sem Erros — página da oferta fundador
 
-Primeira implementação para revisão. A página funciona localmente, mas **não está publicada e não cobra pagamentos**. As rotas desta página só encaminham ao app quando a disponibilidade estiver habilitada e confirmada no backend. A integração com Stripe foi implementada no checkout local do repositório do app, mas ainda não foi conectada à conta ou publicada. A identidade visual é uma proposta, não a identidade visual final confirmada. A logo original foi copiada do repositório do app.
+Primeira implementação para revisão. A página foi publicada pelo proprietário em `empreenda.meisemerros.com.br`; as compras continuam desativadas e o deploy não foi verificado externamente neste ambiente. As rotas desta página só encaminham ao app quando a disponibilidade estiver habilitada e confirmada no backend. A integração com Stripe foi implementada no checkout local do repositório do app, mas ainda não foi conectada à conta ou publicada. A identidade visual é uma proposta, não a identidade visual final confirmada. A logo original foi copiada do repositório do app.
 
 ## Executar
 
@@ -29,6 +29,6 @@ Compra inicial: R$ 147 em pagamento único por 12 meses. Renovação opcional ap
 
 ## Publicação
 
-A estrutura foi preparada para a Vercel, porém não houve deploy nem validação na plataforma. Usar um projeto separado para a página, preservando o app em `app.meisemerros.com.br`. Não alterar o DNS do subdomínio do app. O domínio público pretendido da página é `www.meisemerros.com.br`. Não habilitar o link da oferta antes de validar a integração do app nem apresentar a página provisória de condições como termos definitivos.
+O proprietário informou ter feito o deploy na Vercel e aberto o novo subdomínio. A validação externa continua bloqueada pela política de rede deste ambiente. Usar um projeto separado para a página, preservando o app em `app.meisemerros.com.br`. Não alterar o DNS do subdomínio do app. O domínio da nova página é `empreenda.meisemerros.com.br`. Manter a página antiga em `www.meisemerros.com.br` durante a transição, sem configurar redirecionamentos por enquanto. Não habilitar o link da oferta antes de validar a integração do app nem apresentar a página provisória de condições como termos definitivos.
 
 Não colocar chaves Stripe no navegador, no Git ou em mensagens. Os identificadores `price_...` são configuração pública, mas chaves `sk_...` e segredos `whsec_...` devem ser cadastrados em configuração segura do servidor.

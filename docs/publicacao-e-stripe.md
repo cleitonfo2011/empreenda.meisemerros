@@ -2,11 +2,11 @@
 
 ## O que foi feito
 
-Página responsiva criada no repositório `empreenda.meisemerros`; integração preparada no repositório `MEI-SEM-ERROS-APP`. Nenhuma alteração foi enviada ao GitHub ou publicada. Nenhuma migração foi aplicada ao banco remoto e nenhuma cobrança foi executada.
+Página responsiva criada no repositório `empreenda.meisemerros`; integração preparada no repositório `MEI-SEM-ERROS-APP`. A página foi enviada à branch main do GitHub. O proprietário informou ter feito o deploy na Vercel e aberto `empreenda.meisemerros.com.br`. As alterações do app ainda estão locais. Nenhuma migração foi aplicada ao banco remoto e nenhuma cobrança foi executada nesta tarefa.
 
 Dados informados pelo proprietário:
 
-- Página: `https://www.meisemerros.com.br`, domínio adquirido no Registro.br.
+- Nova página: `https://empreenda.meisemerros.com.br`. Manter a página anterior em `www.meisemerros.com.br` durante a transição.
 - App existente na Vercel: `https://app.meisemerros.com.br`.
 - Supabase: `https://mpmlcqgeksfmzfaqpjdh.supabase.co`.
 - Produto Stripe: `prod_VPUXbhq30p2EZV`.
@@ -51,11 +51,11 @@ A implementação inicial aceita cartão. Pix e parcelamento não foram habilita
 
 ## Página na Vercel e domínio
 
-Usar projeto separado para a página. Código estático em `public`, funções em `api`, configuração em `vercel.json`. Nenhum deploy foi executado ou validado na Vercel nesta tarefa. Antes de importar pelo Git, os arquivos locais precisam ser revisados e enviados ao repositório; isso ainda não foi feito.
+Usar projeto separado para a página. Código estático em `public`, funções em `api`, configuração em `vercel.json`. O proprietário realizou o deploy da página a partir do repositório. A publicação do app atualizado ainda está pendente, e a validação externa do site continua bloqueada pela rede deste ambiente.
 
 Na página, `FOUNDER_LINK_ENABLED=false` por padrão. Somente ativar depois de o app, checkout e termos estarem validados. Quando ativo, o servidor consulta a disponibilidade no app. O botão leva ao login do app e depois ao checkout Stripe; a página de marketing não recebe chaves de pagamento.
 
-Adicionar `www.meisemerros.com.br` ao projeto da página e seguir os registros DNS exatos fornecidos pela Vercel. Não adivinhar IP ou CNAME. Verificar quem opera o DNS: se houver delegação para outro provedor, editar nesse provedor. Preservar `app.meisemerros.com.br` e os registros de e-mail. Definir redirecionamento do domínio raiz `meisemerros.com.br` para o endereço canônico escolhido, sem alterar a configuração do app.
+Usar `empreenda.meisemerros.com.br` no projeto da nova página. O proprietário confirmou que esse endereço abriu a página. Preservar `www.meisemerros.com.br`, o domínio raiz, `app.meisemerros.com.br` e os registros de e-mail. Não desativar ou redirecionar a página anterior durante a revisão da nova oferta.
 
 ## Validações locais
 
