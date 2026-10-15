@@ -1,0 +1,30 @@
+[
+  {
+    "width": 360,
+    "overflow": false,
+    "jsErrors": 0,
+    "disabledCheckout": true,
+    "faq": true
+  },
+  {
+    "width": 390,
+    "overflow": false,
+    "jsErrors": 0,
+    "disabledCheckout": true,
+    "faq": true
+  },
+  {
+    "width": 768,
+    "overflow": false,
+    "jsErrors": 0,
+    "disabledCheckout": true,
+    "faq": true
+  },
+  {
+    "width": 1440,
+    "overflow": false,
+    "jsErrors": 0,
+    "disabledCheckout": true,
+    "faq": true
+  }
+]
