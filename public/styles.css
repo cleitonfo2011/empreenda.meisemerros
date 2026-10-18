@@ -218,3 +218,9 @@ h1 em { color: #52764a; }
   html { scroll-behavior: auto; }
   .button { transition: none; }
 }
+
+/* Valores por meio de pagamento: leitura simples também em telas pequenas. */
+.payment-label { margin: 22px 0 0; font-size: 12px; font-weight: 750; letter-spacing: .08em; }
+.card-price { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px 16px; padding: 14px 16px; margin: 12px 0 20px; border: 1px solid var(--line); border-radius: 14px; background: var(--cream); }
+.card-price span { font-size: 14px; }
+.card-price strong { font-size: 24px; white-space: nowrap; }
