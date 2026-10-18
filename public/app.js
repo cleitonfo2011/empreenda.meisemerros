@@ -7,8 +7,8 @@ if (button && status) {
     const offer = await response.json();
     if (offer.available) {
       button.disabled = false;
-      button.firstChild.textContent = 'Quero meus 12 meses por R$ 147 ';
-      status.textContent = 'Entre na sua conta antes de pagar com segurança pela Stripe.';
+      button.firstChild.textContent = 'Quero escolher como pagar ';
+      status.textContent = 'R$ 147 no Pix ou R$ 247 no cartão à vista. Entre na sua conta para continuar.';
     } else {
       status.textContent = 'Oferta indisponível no momento. Suporte: contato@meisemerros.com.br.';
     }
