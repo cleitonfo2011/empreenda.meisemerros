@@ -224,3 +224,109 @@ h1 em { color: #52764a; }
 .card-price { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px 16px; padding: 14px 16px; margin: 12px 0 20px; border: 1px solid var(--line); border-radius: 14px; background: var(--cream); }
 .card-price span { font-size: 14px; }
 .card-price strong { font-size: 24px; white-space: nowrap; }
+
+/* Opção A: identidade existente, fontes locais e imagens aprovadas. */
+@font-face { font-family: Inter; font-style: normal; font-weight: 400; font-display: swap; src: url('/fonts/inter-latin-400-normal.woff2') format('woff2'); }
+@font-face { font-family: Inter; font-style: normal; font-weight: 600; font-display: swap; src: url('/fonts/inter-latin-600-normal.woff2') format('woff2'); }
+@font-face { font-family: Inter; font-style: normal; font-weight: 700; font-display: swap; src: url('/fonts/inter-latin-700-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Plus Jakarta Sans'; font-style: normal; font-weight: 700; font-display: swap; src: url('/fonts/plus-jakarta-sans-latin-700-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Plus Jakarta Sans'; font-style: normal; font-weight: 800; font-display: swap; src: url('/fonts/plus-jakarta-sans-latin-800-normal.woff2') format('woff2'); }
+.sales-page {
+  --brand-primary: #164b3b;
+  --brand-primary-hover: #23624d;
+  --page-bg: #faf9f4;
+  --surface: #ffffff;
+  --text-primary: #173d32;
+  --text-muted: #53655c;
+  --border: #dce3d8;
+  --focus-ring: #a66a12;
+  font-family: Inter, system-ui, sans-serif;
+}
+.sales-page h1, .sales-page h2, .sales-page h3, .sales-page .price {
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  font-style: normal;
+  font-weight: 800;
+  letter-spacing: -.03em;
+}
+.sales-page h1 { font-size: clamp(36px, 3.65vw, 52px); line-height: 1.14; margin-bottom: 24px; }
+.sales-page h1 span { color: var(--brand-primary); }
+.sales-page h2 { font-size: clamp(28px, 3vw, 40px); line-height: 1.2; }
+.sales-page .wrap { padding-inline: 24px; }
+.sales-page .header { min-height: 96px; }
+.sales-page .hero { grid-template-columns: 1.1fr 1fr; gap: 64px; padding-block: 58px 64px; }
+.sales-page .eyebrow { font-size: 14px; font-weight: 700; line-height: 1.5; letter-spacing: .025em; margin-bottom: 20px; }
+.sales-page .lead { font-size: 18px; max-width: 520px; margin-bottom: 26px; }
+.sales-page .button { min-height: 54px; border-radius: 12px; font-size: 16px; font-weight: 700; box-shadow: none; background: var(--brand-primary); }
+.sales-page .button:hover:not(:disabled) { background: var(--brand-primary-hover); transform: none; }
+.sales-page .button:disabled { background: #526b5f; }
+.sales-page .button-small { font-size: 14px; min-height: 48px; }
+.sales-page .micro { font-size: 14px; text-align: left; }
+.sales-page .secondary-link { display: flex; align-items: center; gap: 8px; width: fit-content; min-height: 44px; margin-top: 16px; color: var(--brand-primary); }
+.hero-visual { margin: 0; background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: 12px; text-align: center; min-width: 0; }
+.hero-visual img { display: block; width: 100%; height: auto; }
+.hero-visual figcaption { font-size: 14px; color: var(--text-muted); padding: 8px; }
+.sales-page .features { background: #fff; border-color: var(--border); }
+.module-list { margin-top: 48px; }
+.module { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 80px; padding-block: 48px; border-top: 1px solid var(--border); }
+.module-copy { max-width: 470px; }
+.module h3 { font-size: clamp(26px, 2.6vw, 36px); line-height: 1.22; margin-bottom: 22px; }
+.module-copy > p:not(.eyebrow) { color: var(--text-muted); font-size: 17px; }
+.module figure { margin: 0; max-width: 440px; width: 100%; justify-self: center; }
+.module img { display: block; width: 100%; height: auto; border-radius: 16px; }
+.module:nth-child(2) .module-copy { grid-column: 2; grid-row: 1; }
+.module:nth-child(2) figure { grid-column: 1; grid-row: 1; }
+.sales-page .section-note { font-size: 14px; }
+.sales-page .story { gap: 64px; }
+.creator-photo { margin: 0; }
+.creator-photo img { width: 100%; height: auto; display: block; border-radius: 20px; }
+.sales-page .story > div > p:not(.eyebrow) { font-size: 17px; }
+.sales-page .offer-intro h2 { font-size: clamp(36px, 3.8vw, 50px); }
+.sales-page .offer-tag { font-size: 14px; }
+.sales-page .price-card h3 { font-size: 28px; }
+.sales-page .price { font-size: 64px; font-variant-numeric: tabular-nums; }
+.sales-page .payment-label, .sales-page .checkout-status, .sales-page .terms-line, .sales-page .regular-price { font-size: 14px; }
+.sales-page .checkout-button { font-size: 16px; }
+.sales-page .footer p, .sales-page .footer a:last-child { font-size: 14px; }
+.final-cta { text-align: center; border-top: 1px solid var(--border); }
+.final-cta > p:not(.eyebrow) { max-width: 560px; margin-inline: auto; color: var(--text-muted); }
+.final-cta .button { margin-top: 12px; }
+.sales-page .final-cta .micro { text-align: center; }
+.skip-link { position: fixed; top: -100px; left: 16px; padding: 12px 18px; background: var(--surface); color: var(--brand-primary); border: 2px solid var(--brand-primary); z-index: 10; }
+.skip-link:focus { top: 12px; }
+@media (max-width: 1050px) and (min-width: 761px) {
+  .sales-page .hero { gap: 32px; }
+  .module, .sales-page .story { gap: 40px; }
+  .sales-page .header nav { gap: 18px; }
+}
+@media (max-width: 760px) {
+  .sales-page .wrap { padding-inline: 22px; }
+  .sales-page .header { min-height: 80px; }
+  .sales-page .brand { font-size: 15px; }
+  .sales-page .brand-logo { width: 40px; height: 40px; }
+  .sales-page .button-small { font-size: 12px; padding-inline: 12px; gap: 8px; }
+  .sales-page .hero { grid-template-columns: 1fr; gap: 28px; padding-block: 32px 40px; }
+  .sales-page h1 { font-size: clamp(32px, 8.5vw, 36px); line-height: 1.16; }
+  .sales-page .eyebrow { font-size: 14px; margin-bottom: 16px; }
+  .sales-page .lead { font-size: 16px; }
+  .sales-page .hero-copy > .button { justify-content: center; padding-inline: 16px; gap: 12px; }
+  .hero-visual { max-width: 430px; margin-inline: auto; width: 100%; }
+  .module-list { margin-top: 32px; }
+  .module { grid-template-columns: 1fr; gap: 20px; padding-block: 32px; }
+  .module-copy { max-width: none; }
+  .module h3 { font-size: 28px; }
+  .module:nth-child(2) .module-copy, .module:nth-child(2) figure { grid-column: auto; grid-row: auto; }
+  .module figure { max-width: 430px; }
+  .module-copy > p:not(.eyebrow), .sales-page .story > div > p:not(.eyebrow) { font-size: 16px; }
+  .sales-page .story { gap: 28px; }
+  .sales-page .creator-photo { order: 2; }
+  .sales-page .price { font-size: 56px; }
+  .sales-page .price-card { padding-inline: 22px; }
+  .sales-page .offer-intro h2 { font-size: 36px; }
+  .sales-page .final-cta .button { width: 100%; }
+}
+@media (max-width: 360px) {
+  .sales-page .header nav .button { font-size: 11px; padding-inline: 9px; gap: 4px; }
+  .sales-page .brand { gap: 4px; font-size: 13px; }
+  .sales-page .brand-logo { width: 32px; height: 32px; }
+  .sales-page .checkout-button { font-size: 14px; }
+}
