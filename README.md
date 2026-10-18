@@ -1,4 +1,4 @@
-# MEI Sem Erros — página da oferta fundador
+# MEI Sem Erros — página da oferta Primeiros 100
 
 Primeira implementação para revisão. A página foi publicada pelo proprietário em `empreenda.meisemerros.com.br`; as compras continuam desativadas e o deploy não foi verificado externamente neste ambiente. As rotas desta página só encaminham ao app quando a disponibilidade estiver habilitada e confirmada no backend. A integração com Stripe foi implementada no checkout local do repositório do app, mas ainda não foi conectada à conta ou publicada. A identidade visual é uma proposta, não a identidade visual final confirmada. A logo original foi copiada do repositório do app.
 

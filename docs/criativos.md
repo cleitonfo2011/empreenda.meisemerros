@@ -48,9 +48,9 @@ Legenda: Sou o Cleiton, analista contábil fiscal. No dia a dia, acompanho empre
 
 CTA: Conheça o aplicativo
 
-## Criativo 4 — Oferta fundador
+## Criativo 4 — Oferta Primeiros 100
 
-Texto principal: **Clube dos 100 Fundadores**
+Texto principal: **Primeiros 100**
 
 Destaque: **12 meses por R$ 147**
 
@@ -58,7 +58,7 @@ Complemento: Finanças, precificação e acompanhamento do limite do MEI.
 
 Condição legível: Pagamento único antecipado. Garantia comercial de 30 dias. Oferta limitada aos primeiros 100 participantes. Consulte disponibilidade e condições.
 
-Legenda: Organize as movimentações do negócio, revise seus preços e acompanhe o faturamento pelo celular. A condição fundador inclui 12 meses por R$ 147 em pagamento único antecipado, com garantia comercial de 30 dias. Confira as condições e a disponibilidade na página.
+Legenda: Organize as movimentações do negócio, revise seus preços e acompanhe o faturamento pelo celular. A condição Primeiros 100 inclui 12 meses por R$ 147 em pagamento único antecipado, com garantia comercial de 30 dias. Confira as condições e a disponibilidade na página.
 
 CTA: Conhecer a oferta
 
@@ -74,7 +74,7 @@ Adaptação proposta do roteiro do documento, para revisão do Cleiton. A frase 
 
 **15–27 s:** “Foi por isso que criei o MEI Sem Erros: uma ferramenta simples para organizar entradas e saídas, revisar preços e acompanhar o faturamento pelo celular.” Mostrar telas reais com dados fictícios.
 
-**27–40 s:** “No Clube dos 100 Fundadores, os primeiros participantes têm 12 meses por R$ 147, em pagamento único antecipado.” Colocar o mesmo preço e prazo na tela.
+**27–40 s:** “Na oferta Primeiros 100, os primeiros participantes têm 12 meses por R$ 147, em pagamento único antecipado.” Colocar o mesmo preço e prazo na tela.
 
 **40–50 s:** “Você tem garantia comercial de 30 dias para conhecer. Toque em saiba mais e confira as condições.”
 
@@ -82,7 +82,7 @@ Gravar em ambiente silencioso, com luz de frente e câmera na altura dos olhos. 
 
 ## Divulgação inicial
 
-Começar com os ângulos de organização e precificação. Usar o vídeo do criador para apresentar a origem do produto. Testar a oferta fundador após validar uma compra de teste, a entrega de acesso e o reembolso. Não definir orçamento de mídia ou publicar campanhas sem autorização específica. Não instalar pixels antes de definir as informações e escolhas de privacidade aplicáveis.
+Começar com os ângulos de organização e precificação. Usar o vídeo do criador para apresentar a origem do produto. Testar a oferta Primeiros 100 após validar uma compra de teste, a entrega de acesso e o reembolso. Não definir orçamento de mídia ou publicar campanhas sem autorização específica. Não instalar pixels antes de definir as informações e escolhas de privacidade aplicáveis.
 
 ## Conceitos visuais gerados
 

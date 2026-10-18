@@ -1,4 +1,4 @@
-# Oferta para os 100 fundadores
+# Oferta para os primeiros 100 participantes
 
 Compra inicial: R$ 147,00 no Pix ou R$ 247,00 no cartão à vista. Mesmo acesso por 12 meses. Primeira renovação opcional: R$ 247,00 por mais 12 meses. Segunda renovação: R$ 298,80 por mais 12 meses. Sem cobrança automática ou parcelamento.
 

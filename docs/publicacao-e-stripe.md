@@ -1,4 +1,4 @@
-# Oferta fundador — estado da implantação
+# Oferta Primeiros 100 — estado da implantação
 
 ## Oferta confirmada
 
@@ -6,7 +6,7 @@ Responsável: Cleiton Felipe Ostroski. Suporte e reembolso: contato@meisemerros.
 
 - Nova página: https://empreenda.meisemerros.com.br. Preservar a página antiga e o domínio do app.
 - App: https://app.meisemerros.com.br.
-- Compra inicial: R$ 147 em pagamento único por 12 meses, com garantia comercial de 30 dias e limite de 100 fundadores.
+- Compra inicial: R$ 147 em pagamento único por 12 meses, com garantia comercial de 30 dias e limite de 100 participantes.
 - Renovação opcional: R$ 298,80 à vista por mais 12 meses, equivalente a R$ 24,90/mês. Proteção por 24 meses após o primeiro ano, permitindo duas renovações anuais opcionais, sem cobrança automática.
 - Janela de renovação confirmada pelo proprietário: a partir dos 30 dias anteriores ao vencimento. O período vigente é preservado na renovação antecipada.
 - Produto de produção informado: `prod_VPUXbhq30p2EZV`.
@@ -15,7 +15,7 @@ Responsável: Cleiton Felipe Ostroski. Suporte e reembolso: contato@meisemerros.
 
 ## O que já foi feito
 
-A página e o app foram enviados ao GitHub e publicados na Vercel. A migração de pagamentos foi aplicada pelo proprietário no Supabase; o SQL Editor apresentou sucesso. O login Google retornou à página dos fundadores. O webhook deixou de responder 503 após configuração/redeploy e passou a rejeitar corretamente uma requisição sem assinatura com 400. Isso não comprova entrega de evento autêntico nem pagamento aprovado.
+A página e o app foram enviados ao GitHub e publicados na Vercel. A migração de pagamentos foi aplicada pelo proprietário no Supabase; o SQL Editor apresentou sucesso. O login Google retornou à página dos Primeiros 100. O webhook deixou de responder 503 após configuração/redeploy e passou a rejeitar corretamente uma requisição sem assinatura com 400. Isso não comprova entrega de evento autêntico nem pagamento aprovado.
 
 O proprietário confirmou que os dados antigos continuam visíveis ao entrar na conta de teste. O histórico mostra que o arquivo de conexão e as operações de leitura/gravação de lançamentos não foram substituídos. Os testes isolados verificam preservação dos registros e acesso das contas antigas sob RLS.
 
