@@ -14,6 +14,10 @@ test('página, recursos e barreira de vendas funcionam juntos', async t => {
   assert.match(html, /12 meses por R\$ 147/);
   assert.match(html, /checkout-button[^>]*disabled/);
   assert.match(html, /30 dias/);
+  assert.match(html, /R\$ 247,00/);
+  assert.match(html, /R\$ 298,80/);
+  assert.match(html, /mesmos 100 fundadores/);
+  assert.doesNotMatch(html, /duas renovações anuais de R\$ 298,80/);
   for (const path of ['/styles.css', '/app.js', '/condicoes.html']) {
     const response = await fetch(base + path);
     assert.equal(response.status, 200, path);
