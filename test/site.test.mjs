@@ -27,7 +27,7 @@ test('página, recursos e barreira de vendas funcionam juntos', async t => {
   assert.match(html, /Ou no cartão à vista/);
   assert.doesNotMatch(html, /anual regular de R\$ 197/);
   assert.match(html, /R\$ 298,80/);
-  assert.match(html, /participantes do plano Primeiros 100/);
+  assert.match(html, /participantes do Plano Fundadores/);
   assert.doesNotMatch(html, /duas renovações anuais de R\$ 298,80/);
   for (const path of ['/styles.css', '/app.js', '/condicoes.html']) {
     const response = await fetch(base + path);
@@ -40,7 +40,7 @@ test('página, recursos e barreira de vendas funcionam juntos', async t => {
   assert.deepEqual(await offer.json(), { available: false, currency: 'BRL', amount: 14700, amounts: { pix: 14700, card: 24700 }, months: 12 });
   const checkout = await fetch(base + '/api/checkout', { method: 'POST' });
   assert.equal(checkout.status, 503);
-  assert.match((await checkout.json()).error, /vendas ainda não/);
+  assert.match((await checkout.json()).error, /Plano Fundadores está indisponível/);
   assert.equal((await fetch(base + '/api/checkout')).status, 405);
   assert.equal((await fetch(base + '/.env')).status, 404);
   assert.equal((await fetch(base + '/arquivo-inexistente')).status, 404);

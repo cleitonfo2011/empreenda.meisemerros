@@ -1,6 +1,8 @@
-# Oferta para os primeiros 100 participantes
+# Plano Fundadores — primeiros 100 compradores
 
 Compra inicial: R$ 147,00 no Pix ou R$ 247,00 no cartão à vista. Mesmo acesso por 12 meses. Primeira renovação opcional: R$ 247,00 por mais 12 meses. Segunda renovação: R$ 298,80 por mais 12 meses. Sem cobrança automática ou parcelamento.
+
+Todos os pagamentos desta oferta passam exclusivamente pelo checkout da Stripe, com a conta identificada pelo login no aplicativo. Após o preenchimento das 100 vagas, encerrar a oferta para novos compradores. O próximo plano será definido posteriormente, sem fallback para um preço ou plano diferente. A renovação dos fundadores continua conforme as condições contratadas.
 
 A página, as perguntas frequentes e as condições foram alinhadas. A referência ao anual regular de R$ 197 foi removida para evitar comparação incoerente com o preço no cartão.
 
