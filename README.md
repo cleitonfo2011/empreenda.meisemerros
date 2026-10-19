@@ -25,7 +25,11 @@ O servidor usa a porta 3000, ou `PORT` se definida. Verificar internamente com `
 
 ## Condição confirmada
 
-Compra inicial: R$ 147 em pagamento único por 12 meses. Renovação opcional após esse período: R$ 298,80 em pagamento único por mais 12 meses, equivalente a R$ 24,90/mês; sem renovação automática. A proteção do equivalente mensal de R$ 24,90 continua pelos 24 meses posteriores ao primeiro ano, permitindo duas renovações anuais opcionais de R$ 298,80.
+Plano Fundadores: oferta exclusiva para os primeiros 100 compradores com pagamento confirmado. Compra inicial de 12 meses: R$ 147 no Pix ou R$ 247 no cartão à vista. Pagamentos exclusivamente pelo checkout da Stripe, após login no aplicativo. Primeira renovação opcional: R$ 247 por mais 12 meses. Segunda renovação opcional: R$ 298,80 por mais 12 meses. Sem cobrança automática.
+
+Após o preenchimento das 100 vagas, a oferta é encerrada para novos compradores. A oferta para os clientes seguintes será definida posteriormente: não adicionar outro plano, preço ou redirecionamento automático como substituto. Preservar as condições de renovação dos fundadores.
+
+A página consulta a disponibilidade no aplicativo e a reconfere no servidor antes de encaminhar a compra. O aplicativo é responsável pela reserva transacional das vagas, criação da sessão Stripe e liberação por confirmação do pagamento. Uma indisponibilidade não deve ser apresentada como prova de esgotamento: também pode indicar vendas fechadas ou uma falha temporária.
 
 ## Publicação
 

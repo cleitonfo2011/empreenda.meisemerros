@@ -7,5 +7,5 @@ export default async function checkout(req, res) {
     return res.status(405).json({ error: 'Método não permitido.' });
   }
   if (await isAvailable()) return res.status(200).json({ url: 'https://app.meisemerros.com.br/fundadores?oferta=fundador' });
-  return res.status(503).json({ error: 'As vendas ainda não estão abertas. O checkout está em preparação.' });
+  return res.status(503).json({ error: 'O Plano Fundadores está indisponível no momento. A oferta é limitada às primeiras 100 vagas. Nenhum outro plano está à venda nesta página.' });
 }
