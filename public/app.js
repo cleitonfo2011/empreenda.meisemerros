@@ -1,6 +1,13 @@
 const button = document.querySelector('.checkout-button');
 const status = document.querySelector('.checkout-status');
 
+// O aplicativo registra a indicação em cookie próprio e retorna à página limpa.
+// Nenhum identificador de cliente ou credencial é enviado na URL.
+const referralCode = new URL(window.location.href || 'https://empreenda.meisemerros.com.br/').searchParams.get('ref');
+if (referralCode && /^v[0-9a-f]{32}$/.test(referralCode)) {
+  window.location.replace('https://app.meisemerros.com.br/api/referrals/capture?ref=' + encodeURIComponent(referralCode));
+}
+
 if (button && status) {
   fetch('/api/offer', { cache: 'no-store' }).then(async response => {
     if (!response.ok) throw new Error('offer');
