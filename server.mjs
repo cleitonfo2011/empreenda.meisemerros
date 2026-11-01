@@ -4,6 +4,7 @@ import { fileURLToPath } from 'node:url';
 import { resolve, extname, sep } from 'node:path';
 import offer from './api/offer.js';
 import checkout from './api/checkout.js';
+import testimonials from './api/testimonials.js';
 
 const root = resolve(fileURLToPath(new URL('./public/', import.meta.url)));
 const types = { '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.svg': 'image/svg+xml', '.png': 'image/png', '.webp': 'image/webp' };
@@ -18,6 +19,7 @@ export function makeServer() {
       const url = new URL(req.url, 'http://localhost');
       if (url.pathname === '/api/offer') return offer(req, res);
       if (url.pathname === '/api/checkout') return checkout(req, res);
+      if (url.pathname === '/api/testimonials') return testimonials(req, res);
       if (!['GET', 'HEAD'].includes(req.method)) return res.status(405).json({ error: 'Método não permitido.' });
       const pathname = decodeURIComponent(url.pathname === '/' ? '/index.html' : url.pathname);
       const file = resolve(root, '.' + pathname);
