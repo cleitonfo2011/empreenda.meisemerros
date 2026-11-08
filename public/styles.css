@@ -273,6 +273,7 @@ h1 em { color: #52764a; }
 .module-copy > p:not(.eyebrow) { color: var(--text-muted); font-size: 17px; }
 .module figure { margin: 0; max-width: 440px; width: 100%; justify-self: center; }
 .module img { display: block; width: 100%; height: auto; border-radius: 16px; }
+.module-gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
 .module:nth-child(2) .module-copy { grid-column: 2; grid-row: 1; }
 .module:nth-child(2) figure { grid-column: 1; grid-row: 1; }
 .sales-page .section-note { font-size: 14px; }
@@ -316,6 +317,7 @@ h1 em { color: #52764a; }
   .module h3 { font-size: 28px; }
   .module:nth-child(2) .module-copy, .module:nth-child(2) figure { grid-column: auto; grid-row: auto; }
   .module figure { max-width: 430px; }
+  .module-gallery { grid-template-columns: 1fr; }
   .module-copy > p:not(.eyebrow), .sales-page .story > div > p:not(.eyebrow) { font-size: 16px; }
   .sales-page .story { gap: 28px; }
   .sales-page .creator-photo { order: 2; }
