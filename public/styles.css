@@ -267,6 +267,32 @@ h1 em { color: #52764a; }
 .hero-visual figcaption { font-size: 14px; color: var(--text-muted); padding: 8px; }
 .sales-page .features { background: #fff; border-color: var(--border); }
 .module-list { margin-top: 48px; }
+.trial-offer { margin-block: 16px 48px; }
+.trial-offer-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(230px, 300px);
+  align-items: center;
+  gap: 32px;
+  padding: clamp(24px, 5vw, 52px);
+  border: 1px solid #a9d9bc;
+  border-radius: 24px;
+  background: #e6f6ec;
+  color: #113d31;
+}
+.trial-offer-card h2 { margin-block: 14px 12px; font-size: clamp(25px, 3.5vw, 40px); }
+.trial-offer-card p { margin-bottom: 0; }
+.trial-badge {
+  display: inline-block;
+  padding: 6px 13px;
+  border-radius: 999px;
+  background: #164b3b;
+  color: #fff;
+  font-size: .8rem;
+  font-weight: 800;
+  letter-spacing: .06em;
+}
+.trial-offer-action .button { width: 100%; }
+.trial-offer-action .micro { margin-top: 12px; }
 .module { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 80px; padding-block: 48px; border-top: 1px solid var(--border); }
 .module-copy { max-width: 470px; }
 .module h3 { font-size: clamp(26px, 2.6vw, 36px); line-height: 1.22; margin-bottom: 22px; }
@@ -312,6 +338,7 @@ h1 em { color: #52764a; }
   .sales-page .hero-copy > .button { justify-content: center; padding-inline: 16px; gap: 12px; }
   .hero-visual { max-width: 430px; margin-inline: auto; width: 100%; }
   .module-list { margin-top: 32px; }
+  .trial-offer-card { grid-template-columns: 1fr; gap: 20px; }
   .module { grid-template-columns: 1fr; gap: 20px; padding-block: 32px; }
   .module-copy { max-width: none; }
   .module h3 { font-size: 28px; }
