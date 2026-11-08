@@ -11,3 +11,23 @@ test('link de indicação passa apenas código válido ao domínio fixo do aplic
   if(expected)assert.equal(redirects[0],'https://app.meisemerros.com.br/api/referrals/capture?ref='+ref);
  }
 });
+
+test('a página só mostra o quadro após o app confirmar a oferta', async () => {
+ for (const available of [true, false]) {
+  const panel = {hidden:true};
+  let finish;
+  runInNewContext(source,{
+   document:{querySelector:selector=>selector==='#teste-gratis'?panel:null},
+   URL, window:{location:{href:'https://empreenda.meisemerros.com.br/'}},
+   fetch:(url,options)=>{
+    assert.equal(url,'https://app.meisemerros.com.br/api/referrals/bind');
+    assert.equal(options.credentials,'include');
+    return new Promise(resolve=>{finish=resolve;});
+   },
+  });
+  assert.equal(panel.hidden,true);
+  finish({ok:true,json:async()=>({trialAvailable:available})});
+  await new Promise(resolve=>setImmediate(resolve));
+  assert.equal(panel.hidden,!available);
+ }
+});

@@ -8,7 +8,16 @@ if (referralCode && /^v[0-9a-f]{32}$/.test(referralCode)) {
   window.location.replace('https://app.meisemerros.com.br/api/referrals/capture?ref=' + encodeURIComponent(referralCode));
 }
 
-if (button && status) {
+const trialOffer = document.querySelector('#teste-gratis');
+if (trialOffer && !referralCode) {
+  fetch('https://app.meisemerros.com.br/api/referrals/bind', { credentials: 'include', cache: 'no-store' })
+    .then(async response => {
+      if (response.ok && (await response.json()).trialAvailable === true) trialOffer.hidden = false;
+    })
+    .catch(() => {});
+}
+
+if (button && status) {
   fetch('/api/offer', { cache: 'no-store' }).then(async response => {
     if (!response.ok) throw new Error('offer');
     const offer = await response.json();
