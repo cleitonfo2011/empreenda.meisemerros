@@ -7,7 +7,7 @@ import checkout from './api/checkout.js';
 import testimonials from './api/testimonials.js';
 
 const root = resolve(fileURLToPath(new URL('./public/', import.meta.url)));
-const types = { '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.svg': 'image/svg+xml', '.png': 'image/png', '.webp': 'image/webp' };
+const types = { '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.svg': 'image/svg+xml', '.png': 'image/png', '.webp': 'image/webp', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.mp4': 'video/mp4' };
 
 export function makeServer() {
   return createServer(async (req, res) => {
