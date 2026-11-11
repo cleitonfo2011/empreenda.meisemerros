@@ -20,14 +20,19 @@ test('página, recursos e barreira de vendas funcionam juntos', async t => {
   assert.equal(page.status, 200);
   const html = await page.text();
   assert.match(html, /12 meses por R\$ 147/);
+  assert.match(html, /Por que não uma planilha ou app grátis/);
+  assert.match(html, /id="demo"/);
+  assert.match(html, /demo-poster.jpg/);
+  assert.match(html, /wa.me\/5547936183942/);
+  assert.doesNotMatch(html, /Verificando a disponibilidade do checkout/);
   assert.match(html, /checkout-button[^>]*disabled/);
   assert.match(html, /30 dias/);
   assert.match(html, /R\$ 247,00/);
   assert.match(html, /À VISTA NO PIX/);
-  assert.match(html, /Ou no cartão à vista/);
+  assert.match(html, /Cartão à vista/);
   assert.doesNotMatch(html, /anual regular de R\$ 197/);
   assert.match(html, /R\$ 298,80/);
-  assert.match(html, /participantes do Plano Fundadores/);
+  assert.match(html, /condição exclusiva de fundador/);
   assert.doesNotMatch(html, /duas renovações anuais de R\$ 298,80/);
   for (const path of ['/styles.css', '/app.js', '/condicoes.html']) {
     const response = await fetch(base + path);
