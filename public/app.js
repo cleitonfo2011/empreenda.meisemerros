@@ -69,7 +69,7 @@ if (button && status) {
       trackLandingEvent('begin_login');
       window.location.assign(target.href);
     } catch {
-      status.textContent = checkoutError + ' Contato: contato@meisemerros.com.br.';
+      status.textContent = checkoutError;
       setCheckoutLabel(currentOffer?.commercial ? 'Contratar ' + currentOffer.title + ' →' : checkoutLabel);
       button.disabled = false;
     }
