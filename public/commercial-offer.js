@@ -3,7 +3,12 @@ export function renderCommercialOffer(offer,root=document){
  const text=(selector,value)=>{const node=root.querySelector(selector);if(node)node.textContent=value;};
  for(const link of root.querySelectorAll('a[href="/condicoes.html"]'))link.setAttribute('href','/condicoes-lotes.html');
  const title=offer.available?offer.title:'MEI Sem Erros · novas adesões indisponíveis';
- text('.offer-tag',title);text('.offer-intro .eyebrow',title);text('.final-cta .button','Conhecer a oferta atual ↑');
+ text('.offer-tag',title);text('.offer-intro .eyebrow',title);
+ text('.hero-copy > .button', 'Conhecer a oferta atual →');
+ text('.price-card h3', '12 meses de acesso ao MEI Sem Erros');
+ const previous=root.querySelector('.previous-price');if(previous)previous.hidden=true;
+ const equivalent=root.querySelector('.monthly-equivalent');if(equivalent)equivalent.hidden=true;
+ const pixLabel=root.querySelector('.payment-label');if(pixLabel)pixLabel.textContent='VALOR ANUAL NO PIX';text('.final-cta .button','Conhecer a oferta atual ↑');
  for(const node of root.querySelectorAll('.faq-list details'))if(/147|renovação|100 vagas|três anos/i.test(node.textContent))node.hidden=true;
  if(!offer.available){text('.hero .micro','Consulte a disponibilidade de novas adesões');text('.price-card .price','Indisponível');text('.card-price','Nenhum lote habilitado no momento');text('.renewal','As condições de quem já contratou são preservadas.');text('.price-description','Novas vendas dependem de habilitação do responsável.');text('.offer-intro p:not(.eyebrow)','As vagas anteriores permanecem vinculadas aos contratos já confirmados.');}
  else{
