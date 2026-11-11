@@ -1,10 +1,13 @@
 const button = document.querySelector('.checkout-button');
 const status = document.querySelector('.checkout-status');
 const checkoutLabel = 'Garantir minha vaga de fundador →';
+let activeCheckoutLabel = checkoutLabel;
 const track = (name) => {
   if (typeof window.gtag === 'function') window.gtag('event', name);
   if (typeof window.fbq === 'function') window.fbq('trackCustom', name);
 };
+const demoLink = document.querySelector('a[href="#demo"]');
+if (demoLink) demoLink.hidden = true;
 document.querySelector('.hero-copy > .button')?.addEventListener('click', () => track('cta_hero_click'));
 document.querySelector('.checkout-button')?.addEventListener('click', () => track('cta_preco_click'));
 document.querySelector('#demo video')?.addEventListener('play', () => track('demo_video_play'));
@@ -20,7 +23,7 @@ window.addEventListener('scroll', updateSticky, { passive: true });
 window.addEventListener('resize', updateSticky);
 updateSticky();
 const demo = document.querySelector('#demo');
-if (demo) Promise.all(['/assets/demo.mp4', '/assets/demo-poster.jpg'].map(path => fetch(path, { method: 'HEAD' }))).then(([video, poster]) => { if (video.ok && poster.ok && (video.headers.get('content-type') || '').includes('video') && (poster.headers.get('content-type') || '').startsWith('image/')) demo.hidden = false; }).catch(() => {});
+if (demo) Promise.all(['/assets/demo.mp4', '/assets/demo-poster.jpg'].map(path => fetch(path, { method: 'HEAD' }))).then(([video, poster]) => { if (video.ok && poster.ok && (video.headers.get('content-type') || '').includes('video') && (poster.headers.get('content-type') || '').startsWith('image/')) demo.hidden = false; if (demoLink) demoLink.hidden = false; }).catch(() => {});
 
 
 // O aplicativo registra a indicação em cookie próprio e retorna à página limpa.
@@ -46,13 +49,14 @@ if (button && status) {
     if(offer.commercial===true){const {renderCommercialOffer}=await import('./commercial-offer.js');renderCommercialOffer(offer);}
     if (offer.available === true) {
       button.disabled = false;
-      button.textContent = offer.commercial ? 'Contratar '+offer.title+' →' : checkoutLabel;
+      activeCheckoutLabel = offer.commercial ? 'Contratar '+offer.title+' →' : checkoutLabel;
+      button.textContent = activeCheckoutLabel;
       status.textContent = 'Entre na sua conta e escolha Pix ou cartão. O pagamento será realizado exclusivamente no checkout da Stripe.';
     } else {
       button.textContent = 'Entrar na lista de espera'; button.disabled = false; button.dataset.waitlist = 'true'; status.textContent = 'Oferta indisponível no momento.';
     }
   }).catch(() => {
-    status.textContent = 'Não conseguimos abrir o pagamento. Tente de novo ou fale com a gente no WhatsApp.'; button.textContent = checkoutLabel; button.disabled = false;
+    status.textContent = 'Não foi possível consultar a oferta agora. Atualize a página e tente novamente.'; button.textContent = 'Tentar novamente'; button.disabled = true;
   });
   button.addEventListener('click', async () => {
     if (button.dataset.waitlist === 'true') { document.querySelector('.waitlist').hidden = false; document.querySelector('.waitlist a')?.focus(); return; }
@@ -63,8 +67,9 @@ if (button && status) {
       const response = await fetch('/api/checkout', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: '{}' });
       const data = await response.json();
       if (response.status === 503) {
-        button.textContent = 'Entrar na lista de espera'; button.disabled = false; button.dataset.waitlist = 'true';
-        status.textContent = data.error || 'Plano Fundadores indisponível no momento.';
+        button.textContent = activeCheckoutLabel;
+        button.disabled = false;
+        status.textContent = 'O pagamento está temporariamente indisponível. Tente novamente em instantes.';
         return;
       }
       if (!response.ok || !data.url) throw new Error(data.error || 'Não foi possível abrir o checkout.');
@@ -74,7 +79,7 @@ if (button && status) {
       window.location.assign(target.href);
     } catch (error) {
       status.textContent = 'Não conseguimos abrir o pagamento. Tente de novo ou fale com a gente no WhatsApp.';
-      button.textContent = checkoutLabel;
+      button.textContent = activeCheckoutLabel;
       button.disabled = false;
     }
   });
