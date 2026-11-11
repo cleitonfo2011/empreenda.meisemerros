@@ -53,3 +53,13 @@ if (button && status) {
     }
   });
 }
+
+// A seção só aparece quando o arquivo de vídeo está efetivamente publicado.
+const demoSection = document.querySelector('#demo');
+if (demoSection) {
+  fetch('/assets/demo.mp4', { method: 'HEAD', cache: 'no-store' })
+    .then(response => {
+      if (response.ok && (response.headers.get('content-type') || '').includes('video/')) demoSection.hidden = false;
+    })
+    .catch(() => {});
+}
