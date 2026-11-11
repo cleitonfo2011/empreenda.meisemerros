@@ -359,3 +359,12 @@ h1 em { color: #52764a; }
   .sales-page .brand-logo { width: 32px; height: 32px; }
   .sales-page .checkout-button { font-size: 14px; }
 }
+
+/* Demonstração em vídeo — formato vertical, responsivo e sem reprodução automática. */
+.demo-section { text-align: center; padding-block: 54px 76px; }
+.demo-section[hidden] { display: none !important; }
+.demo-intro { max-width: 690px; margin: 0 auto 28px; }
+.demo-intro p:last-child { color: var(--muted); }
+.demo-player { width: min(100%, 340px); margin: 0 auto 26px; padding: 10px; background: #173d32; border: 5px solid #244c40; border-radius: 32px; box-shadow: 0 22px 55px #173d3226; }
+.demo-player video { display: block; width: 100%; aspect-ratio: 9 / 20; object-fit: contain; background: #0b1712; border-radius: 20px; }
+@media (max-width: 600px) { .demo-section { padding-block: 32px 48px; } .demo-player { width: min(100%, 290px); } }
