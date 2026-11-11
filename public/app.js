@@ -103,7 +103,7 @@ const demoSection = document.querySelector('#demo');
 if (demoSection) {
   fetch('/assets/demo.mp4', { method: 'HEAD', cache: 'no-store' })
     .then(response => {
-      if (response.ok && (response.headers.get('content-type') || '').includes('video/')) demoSection.hidden = false;
+      if (response.ok && (response.headers.get('content-type') || '').includes('video/')) { demoSection.hidden = false; const link = document.querySelector('#hero-demo-link'); if (link) link.hidden = false; }
     })
     .catch(() => {});
 }
