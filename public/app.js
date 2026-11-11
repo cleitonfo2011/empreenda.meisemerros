@@ -20,7 +20,7 @@ window.addEventListener('scroll', updateSticky, { passive: true });
 window.addEventListener('resize', updateSticky);
 updateSticky();
 const demo = document.querySelector('#demo');
-if (demo) fetch('/assets/demo.mp4', { method: 'HEAD' }).then(r => { if (r.ok && (r.headers.get('content-type') || '').includes('video')) demo.hidden = false; }).catch(() => {});
+if (demo) Promise.all(['/assets/demo.mp4', '/assets/demo-poster.jpg'].map(path => fetch(path, { method: 'HEAD' }))).then(([video, poster]) => { if (video.ok && poster.ok && (video.headers.get('content-type') || '').includes('video') && (poster.headers.get('content-type') || '').startsWith('image/')) demo.hidden = false; }).catch(() => {});
 
 
 // O aplicativo registra a indicação em cookie próprio e retorna à página limpa.
@@ -70,6 +70,7 @@ if (button && status) {
       if (!response.ok || !data.url) throw new Error(data.error || 'Não foi possível abrir o checkout.');
       const target = new URL(data.url);
       if (target.protocol !== 'https:' || target.hostname !== 'app.meisemerros.com.br' || !['/fundadores','/assinatura'].includes(target.pathname)) throw new Error('Endereço de acesso inválido.');
+      track('login_inicio');
       window.location.assign(target.href);
     } catch (error) {
       status.textContent = 'Não conseguimos abrir o pagamento. Tente de novo ou fale com a gente no WhatsApp.';
