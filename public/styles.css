@@ -359,3 +359,26 @@ h1 em { color: #52764a; }
   .sales-page .brand-logo { width: 32px; height: 32px; }
   .sales-page .checkout-button { font-size: 14px; }
 }
+
+/* Conversão Fundadores: complementos sem substituir a identidade existente. */
+.sales-page { --brand-primary: #113d31; }
+.hero-professions { font-size: 13px; color: var(--muted); margin-top: 8px; }
+.demo-video { width: 100%; max-width: 860px; margin-inline: auto; aspect-ratio: 16/9; background: #113d31; border-radius: 18px; overflow: hidden; }
+.demo-video video { width: 100%; height: 100%; object-fit: contain; }
+.comparison-scroll { overflow-x: auto; max-width: 100%; border: 1px solid var(--line); border-radius: 18px; }
+.comparison table { width: 100%; min-width: 650px; border-collapse: collapse; background: white; }
+.comparison th, .comparison td { padding: 16px; text-align: left; border-bottom: 1px solid var(--line); }
+.comparison thead { background: #e5ecd8; }
+.comparison td:last-child { font-weight: 700; color: #113d31; }
+.previous-price { color: var(--muted); margin: 0; }
+.previous-price s { font-size: 20px; }
+.previous-price span, .monthly-equivalent { font-size: 13px; color: var(--muted); }
+.guarantee-highlight { font-weight: 700; padding: 14px; border-radius: 12px; background: #e5ecd8; }
+.waitlist { margin-block: 12px; }
+.waitlist a { text-decoration: underline; }
+.mobile-sticky-cta { display: none; }
+@media (max-width: 760px) {
+  .demo-video { aspect-ratio: 9/16; max-width: 420px; }
+  .mobile-sticky-cta:not([hidden]) { display: block; position: fixed; bottom: max(12px, env(safe-area-inset-bottom)); left: 16px; right: 16px; z-index: 30; background: #113d31; color: white; padding: 14px; text-align: center; border-radius: 12px; font-weight: 700; box-shadow: 0 5px 20px #0004; text-decoration: none; }
+  .sales-page { padding-bottom: 0; }
+}
