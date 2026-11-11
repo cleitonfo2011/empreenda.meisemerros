@@ -368,3 +368,25 @@ h1 em { color: #52764a; }
 .demo-player { width: min(100%, 340px); margin: 0 auto 26px; padding: 10px; background: #173d32; border: 5px solid #244c40; border-radius: 32px; box-shadow: 0 22px 55px #173d3226; }
 .demo-player video { display: block; width: 100%; aspect-ratio: 9 / 20; object-fit: contain; background: #0b1712; border-radius: 20px; }
 @media (max-width: 600px) { .demo-section { padding-block: 32px 48px; } .demo-player { width: min(100%, 290px); } }
+
+/* Ajustes de conversão, preservando a identidade visual da página. */
+.sales-page { --brand-primary: #113d31; --brand-primary-hover: #23624d; }
+.original-price { margin: 8px 0 0; color: var(--text-muted); font-size: 17px; }
+.original-price s { font-size: 22px; font-weight: 700; }
+.original-price span { margin-left: 6px; font-size: 13px; }
+.monthly-equivalent { margin: 0 0 12px; color: var(--text-muted); font-size: 14px; }
+.guarantee-above-cta { padding: 16px 18px; margin: 18px 0 16px; border: 1px solid #a9d9bc; background: #e6f6ec; border-radius: 14px; color: #113d31; }
+.offer-disclaimer { border-top: 1px solid var(--border); padding-top: 16px; margin-top: 20px; font-size: 13px; color: var(--text-muted); }
+.comparison-scroll { width: 100%; overflow-x: auto; border: 1px solid var(--border); border-radius: 16px; -webkit-overflow-scrolling: touch; }
+.comparison-scroll table { width: 100%; min-width: 620px; border-collapse: collapse; text-align: left; background: #fff; }
+.comparison-scroll th, .comparison-scroll td { padding: 16px 20px; border-bottom: 1px solid var(--border); vertical-align: top; }
+.comparison-scroll thead th { background: #e6f6ec; color: #113d31; font-weight: 800; }
+.comparison-scroll tbody th { font-weight: 600; }
+.comparison-scroll tr:last-child > * { border-bottom: 0; }
+.comparison-scroll td:last-child { font-weight: 700; color: #113d31; }
+.mobile-sticky-cta[hidden], .waitlist[hidden], .testimonials-placeholders[hidden] { display: none !important; }
+.mobile-sticky-cta { display: none; }
+@media (max-width: 760px) {
+  .mobile-sticky-cta:not([hidden]) { position: fixed; display: flex; justify-content: center; align-items: center; gap: 8px; z-index: 30; left: 12px; right: 12px; bottom: max(12px, env(safe-area-inset-bottom)); min-height: 54px; border-radius: 12px; background: #113d31; color: white; font-weight: 700; text-decoration: none; box-shadow: 0 10px 35px #113d3155; }
+  .comparison-scroll th, .comparison-scroll td { padding: 12px 14px; }
+}
