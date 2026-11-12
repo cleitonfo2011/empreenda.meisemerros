@@ -416,3 +416,22 @@ h1 em { color: #52764a; }
 .feature-carousel-cta { text-align:center; margin-top:24px; }
 @media(max-width:760px){ .feature-carousel { margin-right:-22px; padding-right:22px; } .feature-carousel-controls { align-items:flex-start; } .feature-carousel-controls p { font-size:13px; } .feature-card img { height:245px; } .feature-carousel-cta .button { width:100%; } }
 @media(prefers-reduced-motion:reduce){.feature-carousel{scroll-behavior:auto}}
+
+/* Galeria de telas: uma captura por vez, sem cartões lado a lado no celular. */
+.sales-page .feature-carousel { width: min(100%, 430px); margin: 0 auto; padding: 0 0 12px; gap: 0; scroll-snap-type: x mandatory; scrollbar-width: none; border-radius: 20px; }
+.sales-page .feature-carousel::-webkit-scrollbar { display: none; }
+.sales-page .feature-card { flex: 0 0 100%; min-width: 100%; box-sizing: border-box; scroll-snap-align: center; scroll-snap-stop: always; border: 0; border-radius: 18px; background: transparent; }
+.sales-page .feature-card img { width: 100%; height: min(53vh, 460px); object-fit: contain; background: transparent; border-radius: 14px; }
+.sales-page .feature-card-copy { text-align: center; padding: 10px 14px 4px; }
+.sales-page .feature-card-copy h3 { font-size: 20px; margin: 0 0 5px; }
+.sales-page .feature-card-copy p:last-child { font-size: 14px; line-height: 1.4; }
+.sales-page .feature-carousel-controls { max-width: 430px; margin: 16px auto 12px; }
+.sales-page .feature-carousel-cta { margin-top: 12px; }
+@media (max-width: 760px) {
+  .sales-page .features.section { padding-block: 38px; }
+  .sales-page .feature-carousel { margin: 0 auto; padding-right: 0; }
+  .sales-page .feature-card img { height: min(48vh, 380px); }
+  .sales-page .feature-carousel-controls { align-items: center; }
+  .sales-page .feature-carousel-controls p { font-size: 13px; max-width: 190px; }
+  .sales-page .hero-visual { max-width: 260px; }
+}
