@@ -82,7 +82,7 @@ function trackLandingEvent(eventName) {
   if (typeof window.fbq === 'function') window.fbq('trackCustom', eventName);
 }
 document.querySelectorAll?.('[data-analytics]')?.forEach(node => node.addEventListener('click', () => trackLandingEvent(node.dataset.analytics)));
-document.querySelector('#demo-video')?.addEventListener('play', () => trackLandingEvent('demo_video_play'));
+document.querySelector('#demo-video')?.addEventListener?.('play', () => trackLandingEvent('demo_video_play'));
 
 const stickyCta = document.querySelector('.mobile-sticky-cta');
 const hero = document.querySelector('.hero');
