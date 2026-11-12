@@ -50,3 +50,33 @@ test('página, recursos e barreira de vendas funcionam juntos', async t => {
   assert.equal((await fetch(base + '/.env')).status, 404);
   assert.equal((await fetch(base + '/arquivo-inexistente')).status, 404);
 });
+
+test('landing mantém compra principal, teste condicionado e carrossel real', async () => {
+  const server = makeServer().listen(0, '127.0.0.1');
+  await once(server, 'listening');
+  try {
+    const base = `http://127.0.0.1:${server.address().port}`;
+    const html = await (await fetch(base)).text();
+    const js = await (await fetch(base + '/app.js')).text();
+    assert.match(html, /data-analytics="hero_cta"/);
+    assert.match(html, /id="hero-trial-option" hidden/);
+    assert.match(html, /id="feature-carousel"/);
+    assert.equal((html.match(/class="feature-card"/g) || []).length, 5);
+    assert.match(html, /checkout-button[^>]*disabled/);
+    assert.match(js, /trialAvailable === true/);
+    assert.match(js, /data-carousel-next/);
+  } finally { await new Promise(resolve => server.close(resolve)); }
+});
+
+// Garante que o carrossel e a demonstração não apontem para arquivos ausentes.
+test('mídias da landing estão disponíveis no servidor', async () => {
+  const server = makeServer().listen(0, '127.0.0.1');
+  await once(server, 'listening');
+  try {
+    const base = `http://127.0.0.1:${server.address().port}`;
+    for (const path of ['/assets/financas-480.webp', '/assets/precos-480.webp', '/assets/limite-480.webp', '/assets/relatorios-financeiros.jpg', '/assets/guia-das.jpg', '/assets/demo.mp4', '/assets/demo-poster.jpg']) {
+      const response = await fetch(base + path, { method: 'HEAD' });
+      assert.equal(response.status, 200, path);
+    }
+  } finally { await new Promise(resolve => server.close(resolve)); }
+});

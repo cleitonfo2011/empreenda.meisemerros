@@ -23,7 +23,7 @@ async function clientFlow(available, checkoutResponse) {
 test('compra usa somente o fluxo autenticado dos fundadores', async () => {
   const ui = await clientFlow(true, { ok: true, status: 200, json: async () => ({ url: 'https://app.meisemerros.com.br/fundadores?oferta=fundador' }) });
   assert.equal(ui.button.disabled, false);
-  assert.match(ui.status.textContent, /exclusivamente no checkout da Stripe/);
+  assert.match(ui.status.textContent, /Pagamento seguro pela Stripe/);
   await ui.click();
   assert.deepEqual(ui.redirects, ['https://app.meisemerros.com.br/fundadores?oferta=fundador']);
 });
@@ -48,7 +48,7 @@ test('não redireciona para outro plano ou destino recebido na resposta', async 
     const ui = await clientFlow(true, { ok: true, status: 200, json: async () => ({ url }) });
     await ui.click();
     assert.deepEqual(ui.redirects, []);
-    assert.match(ui.status.textContent, /inválido/);
+    assert.match(ui.status.textContent, /Não conseguimos abrir o pagamento/);
   }
 });
 

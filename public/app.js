@@ -12,7 +12,7 @@ const trialOffer = document.querySelector('#teste-gratis');
 if (trialOffer && !referralCode) {
   fetch('https://app.meisemerros.com.br/api/referrals/bind', { credentials: 'include', cache: 'no-store' })
     .then(async response => {
-      if (response.ok && (await response.json()).trialAvailable === true) trialOffer.hidden = false;
+      if (response.ok && (await response.json()).trialAvailable === true) { trialOffer.hidden = false; const heroTrial = document.querySelector('#hero-trial-option'); if (heroTrial) heroTrial.hidden = false; }
     })
     .catch(() => {});
 }
@@ -81,8 +81,8 @@ function trackLandingEvent(eventName) {
   if (typeof window.gtag === 'function') window.gtag('event', eventName);
   if (typeof window.fbq === 'function') window.fbq('trackCustom', eventName);
 }
-document.querySelectorAll('[data-analytics]').forEach(node => node.addEventListener('click', () => trackLandingEvent(node.dataset.analytics)));
-document.querySelector('#demo-video')?.addEventListener('play', () => trackLandingEvent('demo_video_play'));
+document.querySelectorAll?.('[data-analytics]')?.forEach(node => node.addEventListener('click', () => trackLandingEvent(node.dataset.analytics)));
+document.querySelector('#demo-video')?.addEventListener?.('play', () => trackLandingEvent('demo_video_play'));
 
 const stickyCta = document.querySelector('.mobile-sticky-cta');
 const hero = document.querySelector('.hero');
@@ -106,4 +106,17 @@ if (demoSection) {
       if (response.ok && (response.headers.get('content-type') || '').includes('video/')) { demoSection.hidden = false; const link = document.querySelector('#hero-demo-link'); if (link) link.hidden = false; }
     })
     .catch(() => {});
+}
+
+// Carrossel acessível: botões apenas movem o scroll, sem alterar dados do aplicativo.
+const featureCarousel = document.querySelector('#feature-carousel');
+if (featureCarousel) {
+  const move = direction => {
+    const card = featureCarousel.querySelector('.feature-card');
+    if (!card) return;
+    const distance = featureCarousel.clientWidth;
+    featureCarousel.scrollBy({ left: direction * distance, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+  };
+  document.querySelector('[data-carousel-prev]')?.addEventListener?.('click', () => move(-1));
+  document.querySelector('[data-carousel-next]')?.addEventListener?.('click', () => move(1));
 }
