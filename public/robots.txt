@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://empreenda.meisemerros.com.br/sitemap.xml
