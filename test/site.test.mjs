@@ -19,7 +19,7 @@ test('página, recursos e barreira de vendas funcionam juntos', async t => {
   const page = await fetch(base);
   assert.equal(page.status, 200);
   const html = await page.text();
-  assert.match(html, /12 meses por R\$ 147/);
+  assert.match(html, /R\$ 12,25\/mês/);
   assert.match(html, /Por que não uma planilha ou app grátis/);
   assert.match(html, /id="demo"/);
   assert.match(html, /demo-poster.jpg/);
@@ -27,20 +27,21 @@ test('página, recursos e barreira de vendas funcionam juntos', async t => {
   assert.doesNotMatch(html, /Verificando a disponibilidade do checkout/);
   assert.match(html, /checkout-button[^>]*disabled/);
   assert.match(html, /30 dias/);
-  assert.match(html, /R\$ 247,00/);
-  assert.match(html, /À VISTA NO PIX/);
-  assert.match(html, /Cartão à vista/);
+  assert.doesNotMatch(html, /R\$ 247,00/);
+  assert.match(html, /pagamento único no Pix/);
+  assert.doesNotMatch(html, /Cartão à vista/);
   assert.doesNotMatch(html, /anual regular de R\$ 197/);
-  assert.match(html, /R\$ 298,80/);
-  assert.match(html, /condição exclusiva de fundador/);
+  assert.doesNotMatch(html, /R\$ 298,80/);
+  assert.match(html, /a renovação é opcional/);
   assert.doesNotMatch(html, /duas renovações anuais de R\$ 298,80/);
-  for (const path of ['/styles.css', '/app.js', '/condicoes.html']) {
+  for (const path of ['/styles.css', '/app.js', '/condicoes.html', '/robots.txt', '/sitemap.xml']) {
     const response = await fetch(base + path);
     assert.equal(response.status, 200, path);
     assert.ok((await response.text()).length > 100);
   }
   const terms = await (await fetch(base + '/condicoes.html')).text();
-  assert.match(terms, /R\$ 147,00 à vista no Pix ou R\$ 247,00 no cartão à vista/);
+  assert.match(terms, /R\$ 147,00 à vista no Pix/);
+  assert.match(terms, /R\$ 298,80/);
   const offer = await fetch(base + '/api/offer');
   assert.deepEqual(await offer.json(), { available: false, currency: 'BRL', amount: 14700, amounts: { pix: 14700, card: 24700 }, months: 12 });
   const checkout = await fetch(base + '/api/checkout', { method: 'POST' });
