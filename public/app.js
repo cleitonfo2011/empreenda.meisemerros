@@ -114,8 +114,8 @@ if (featureCarousel) {
   const move = direction => {
     const card = featureCarousel.querySelector('.feature-card');
     if (!card) return;
-    const distance = card.getBoundingClientRect().width + 18;
-    featureCarousel.scrollBy({ left: direction * distance, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
+    const distance = featureCarousel.clientWidth;
+    featureCarousel.scrollBy({ left: direction * distance, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
   };
   document.querySelector('[data-carousel-prev]')?.addEventListener('click', () => move(-1));
   document.querySelector('[data-carousel-next]')?.addEventListener('click', () => move(1));
