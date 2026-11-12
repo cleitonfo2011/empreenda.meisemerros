@@ -67,3 +67,16 @@ test('landing mantém compra principal, teste condicionado e carrossel real', as
     assert.match(js, /data-carousel-next/);
   } finally { await new Promise(resolve => server.close(resolve)); }
 });
+
+// Garante que o carrossel e a demonstração não apontem para arquivos ausentes.
+test('mídias da landing estão disponíveis no servidor', async () => {
+  const server = makeServer().listen(0, '127.0.0.1');
+  await once(server, 'listening');
+  try {
+    const base = `http://127.0.0.1:${server.address().port}`;
+    for (const path of ['/assets/financas-480.webp', '/assets/precos-480.webp', '/assets/limite-480.webp', '/assets/relatorios-financeiros.jpg', '/assets/guia-das.jpg', '/assets/demo.mp4', '/assets/demo-poster.jpg']) {
+      const response = await fetch(base + path, { method: 'HEAD' });
+      assert.equal(response.status, 200, path);
+    }
+  } finally { await new Promise(resolve => server.close(resolve)); }
+});
