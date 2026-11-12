@@ -117,6 +117,6 @@ if (featureCarousel) {
     const distance = featureCarousel.clientWidth;
     featureCarousel.scrollBy({ left: direction * distance, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
   };
-  document.querySelector('[data-carousel-prev]')?.addEventListener('click', () => move(-1));
-  document.querySelector('[data-carousel-next]')?.addEventListener('click', () => move(1));
+  document.querySelector('[data-carousel-prev]')?.addEventListener?.('click', () => move(-1));
+  document.querySelector('[data-carousel-next]')?.addEventListener?.('click', () => move(1));
 }
