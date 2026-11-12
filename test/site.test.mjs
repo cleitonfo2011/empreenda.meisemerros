@@ -22,6 +22,9 @@ test('página, recursos e barreira de vendas funcionam juntos', async t => {
   assert.match(html, /R\$ 12,25\/mês/);
   assert.match(html, /Por que não uma planilha ou app grátis/);
   assert.match(html, /id="demo"/);
+  assert.match(html, /id="module-carousel"/);
+  assert.equal((html.match(/class="module module-slide"/g) || []).length, 5);
+  assert.match(html, /module-carousel.js/);
   assert.match(html, /demo-poster.jpg/);
   assert.match(html, /wa.me\/5547936183942/);
   assert.doesNotMatch(html, /Verificando a disponibilidade do checkout/);
@@ -34,10 +37,10 @@ test('página, recursos e barreira de vendas funcionam juntos', async t => {
   assert.doesNotMatch(html, /R\$ 298,80/);
   assert.match(html, /a renovação é opcional/);
   assert.doesNotMatch(html, /duas renovações anuais de R\$ 298,80/);
-  for (const path of ['/styles.css', '/app.js', '/condicoes.html', '/robots.txt', '/sitemap.xml']) {
+  for (const path of ['/styles.css', '/app.js', '/condicoes.html', '/robots.txt', '/sitemap.xml', '/module-carousel.js']) {
     const response = await fetch(base + path);
     assert.equal(response.status, 200, path);
-    assert.ok((await response.text()).length > 100);
+    assert.ok((await response.text()).length > (path === '/sitemap.xml' ? 50 : 100));
   }
   const terms = await (await fetch(base + '/condicoes.html')).text();
   assert.match(terms, /R\$ 147,00 à vista no Pix/);
