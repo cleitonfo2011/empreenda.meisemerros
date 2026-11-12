@@ -435,3 +435,8 @@ h1 em { color: #52764a; }
   .sales-page .feature-carousel-controls p { font-size: 13px; max-width: 190px; }
   .sales-page .hero-visual { max-width: 260px; }
 }
+
+/* Hero compacto: todas as capturas de tela ficam exclusivamente na galeria. */
+.sales-page .hero { grid-template-columns: minmax(0, 1fr); max-width: 820px; gap: 0; padding-block: 38px 42px; }
+.sales-page .hero-copy { max-width: 760px; }
+@media (max-width:760px) { .sales-page .hero { padding-block: 28px 30px; } }
