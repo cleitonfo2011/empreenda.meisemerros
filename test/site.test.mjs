@@ -29,7 +29,7 @@ test('página, recursos e barreira de vendas funcionam juntos', async t => {
   assert.match(html, /30 dias/);
   assert.match(html, /R\$ 247,00/);
   assert.match(html, /À VISTA NO PIX/);
-  assert.match(html, /Cartão à vista/);
+  assert.doesNotMatch(html, /cartão à vista/i);
   assert.doesNotMatch(html, /anual regular de R\$ 197/);
   assert.match(html, /R\$ 298,80/);
   assert.match(html, /condição exclusiva de fundador/);
@@ -40,9 +40,11 @@ test('página, recursos e barreira de vendas funcionam juntos', async t => {
     assert.ok((await response.text()).length > 100);
   }
   const terms = await (await fetch(base + '/condicoes.html')).text();
-  assert.match(terms, /R\$ 147,00 à vista no Pix ou R\$ 247,00 no cartão à vista/);
+  assert.match(terms, /R\$ 147,00 à vista no Pix, em pagamento único antecipado/);
+  assert.match(terms, /mais 12 meses por R\$ 247,00/);
+  assert.match(terms, /R\$ 298,80/);
   const offer = await fetch(base + '/api/offer');
-  assert.deepEqual(await offer.json(), { available: false, currency: 'BRL', amount: 14700, amounts: { pix: 14700, card: 24700 }, months: 12 });
+  assert.deepEqual(await offer.json(), { available: false, currency: 'BRL', amount: 14700, amounts: { pix: 14700 }, initial_payment_methods: ['pix'], months: 12 });
   const checkout = await fetch(base + '/api/checkout', { method: 'POST' });
   assert.equal(checkout.status, 503);
   assert.match((await checkout.json()).error, /Plano Fundadores está indisponível/);

@@ -17,7 +17,33 @@ test('pagina comercial: precos e renovacoes do lote, sem HTML recebido e sem Fun
  const nodes=new Map();const node=selector=>{if(!nodes.has(selector))nodes.set(selector,{textContent:'',setAttribute(){}});return nodes.get(selector);};
  const terms={textContent:'Oferta limitada a 100 fundadores'},faq={textContent:'Quando acabam as 100 vagas?',hidden:false};
  const root={querySelector:node,querySelectorAll:selector=>selector==='.faq-list details'?[faq]:selector==='.price-card .terms-line'?[terms]:[]};
- renderCommercialOffer({available:true,title:'Clube Mil',positions_from:101,positions_to:1000,prices:{initial_pix:19700,initial_card:24700,renewal_1:29700,renewal_2:29880}},root);
+ renderCommercialOffer({available:true,title:'Clube Mil',positions_from:101,positions_to:1000,initial_payment_methods:['pix','card'],prices:{initial_pix:19700,initial_card:24700,renewal_1:29700,renewal_2:29880}},root);
  assert.match(node('.price-card .price').textContent,/197/);assert.match(node('.card-price').textContent,/247/);assert.match(node('.renewal').textContent,/297/);assert.equal(faq.hidden,true);assert.ok(!terms.textContent.includes('limitada a 100'));
  renderCommercialOffer({available:false},root);assert.equal(node('.price-card .price').textContent,'Indisponível');
+});
+
+test('Fundadores: catálogo e vitrine exigem Pix e preservam os preços das renovações', async t => {
+ const saved = { ...process.env };
+ const original=globalThis.fetch;
+ t.after(() => {
+  globalThis.fetch=original;
+  for(const key of ['COMMERCIAL_LOTS_ENABLED','FOUNDER_LINK_ENABLED']) {
+   if(saved[key]===undefined)delete process.env[key];else process.env[key]=saved[key];
+  }
+ });
+ process.env.COMMERCIAL_LOTS_ENABLED='true';process.env.FOUNDER_LINK_ENABLED='true';
+ const data={available:true,commercial:true,code:'founders',lot_id:'12345678-1234-4234-8234-123456789abc',title:'Fundadores',positions_from:1,positions_to:100,initial_payment_methods:['pix'],prices:{initial_pix:14700,initial_card:24700,renewal_1:24700,renewal_2:29880},terms_version:'commercial-v1-2026-11-01'};
+ globalThis.fetch=async()=>Response.json(data);
+ const offer=await currentOffer();
+ assert.equal(offer.available,true);
+ assert.deepEqual(offer.initial_payment_methods,['pix']);
+ assert.deepEqual(offer.prices,{initial_pix:14700,renewal_1:24700,renewal_2:29880});
+ const nodes = new Map();
+ const root={querySelector(selector){if(!nodes.has(selector))nodes.set(selector,{});return nodes.get(selector);},querySelectorAll:()=>[]};
+ renderCommercialOffer(offer,root);
+ assert.equal(nodes.get('.card-price').hidden,true);
+ assert.doesNotMatch(nodes.get('.hero .micro').textContent,/cartão|247/);
+ assert.match(nodes.get('.renewal').textContent,/247.*298/);
+ data.initial_payment_methods=['pix','card'];
+ assert.equal((await currentOffer()).available,false);
 });

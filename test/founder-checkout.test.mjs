@@ -65,7 +65,7 @@ test('servidor reconfere disponibilidade a cada tentativa sem oferecer substitut
     }
   });
   let calls = 0;
-  globalThis.fetch = async () => ({ ok: true, json: async () => ({ available: ++calls === 1 }) });
+  globalThis.fetch = async () => ({ ok: true, json: async () => ({ available: ++calls === 1, initial_payment_methods: ['pix'] }) });
   const invoke = async () => {
     let result;
     const response = { setHeader() {}, status(code) { this.code = code; return this; }, json(body) { result = { code: this.code, body }; } };
