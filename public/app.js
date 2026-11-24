@@ -4,17 +4,40 @@ const status = document.querySelector('.checkout-status');
 // O aplicativo registra a indicação em cookie próprio e retorna à página limpa.
 // Nenhum identificador de cliente ou credencial é enviado na URL.
 const referralCode = new URL(window.location.href || 'https://empreenda.meisemerros.com.br/').searchParams.get('ref');
-if (referralCode && /^v[0-9a-f]{32}$/.test(referralCode)) {
+if (referralCode && /^[vi][0-9a-f]{32}$/.test(referralCode)) {
   window.location.replace('https://app.meisemerros.com.br/api/referrals/capture?ref=' + encodeURIComponent(referralCode));
 }
 
 const trialOffer = document.querySelector('#teste-gratis');
 if (trialOffer && !referralCode) {
-  fetch('https://app.meisemerros.com.br/api/referrals/bind', { credentials: 'include', cache: 'no-store' })
-    .then(async response => {
-      if (response.ok && (await response.json()).trialAvailable === true) { trialOffer.hidden = false; const heroTrial = document.querySelector('#hero-trial-option'); if (heroTrial) heroTrial.hidden = false; }
-    })
-    .catch(() => {});
+  const showTrial = (available, days) => {
+    const show = available === true && [7, 15, 30].includes(days);
+    trialOffer.hidden = !show;
+    const heroTrial = document.querySelector('#hero-trial-option');
+    if (heroTrial) heroTrial.hidden = !show;
+    if (show) document.querySelectorAll?.('[data-trial-days]')?.forEach(node => { node.textContent = String(days); });
+  };
+  let revision = 0;
+  const refreshTrial = async () => {
+    const request = ++revision;
+    try {
+      const response = await fetch('https://app.meisemerros.com.br/api/referrals/bind', { credentials: 'include', cache: 'no-store' });
+      if (!response.ok) throw Error('offer');
+      const hint = await response.json();
+      if (request !== revision) return;
+      if (hint.referralPresent === true) {
+        showTrial(hint.trialAvailable, hint.durationDays);
+        return;
+      }
+      const publicResponse = await fetch('https://app.meisemerros.com.br/api/trial-offer', { credentials: 'omit', cache: 'no-store' });
+      if (!publicResponse.ok) throw Error('offer');
+      const offer = await publicResponse.json();
+      if (request === revision) showTrial(offer.available, offer.durationDays);
+    } catch { if (request === revision) showTrial(false, null); }
+  };
+  void refreshTrial();
+  window.addEventListener?.('focus', refreshTrial);
+  document.addEventListener?.('visibilitychange', () => { if (document.visibilityState === 'visible') void refreshTrial(); });
 }
 
 const checkoutLabel = 'Garantir minha vaga de fundador →';

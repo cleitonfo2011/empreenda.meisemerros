@@ -65,7 +65,7 @@ test('landing mantém compra principal, teste condicionado e carrossel real', as
     assert.match(html, /id="feature-carousel"/);
     assert.equal((html.match(/class="feature-card"/g) || []).length, 5);
     assert.match(html, /checkout-button[^>]*disabled/);
-    assert.match(js, /trialAvailable === true/);
+    assert.match(js, /showTrial\(hint.trialAvailable, hint.durationDays\)/);
     assert.match(js, /data-carousel-next/);
   } finally { await new Promise(resolve => server.close(resolve)); }
 });
